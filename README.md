@@ -1,5 +1,5 @@
 This a MERN Stack based website. Its about travelling related blog.
-User can share their experience using blogs. This site live hosted a <a href='https://travel-blogs.netlify.app/'>here.</a>
+User can share their experience using blogs. This site live hosted a <a href='https://travel-blog-2022.web.app/'>here.</a>
 
 Website Features:-
 

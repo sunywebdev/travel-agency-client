@@ -14,7 +14,7 @@ export default function Blogs() {
 	const [page, setPage] = useState(0);
 	const [pageCount, setPageCount] = useState(0);
 	const [blogs, setBlogs] = useState([]);
-	const size = 2;
+	const size = 10;
 	useEffect(() => {
 		fetch(
 			`https://pure-forest-30659.herokuapp.com/allblogs?page=${page}&&size=${size}`,
