@@ -9,6 +9,7 @@ import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyReviews from "./Pages/Dashboard/MyReviews/MyReviews";
 import PageRols from "./Pages/Dashboard/PageRols/PageRols";
+import Slider from "./Pages/Dashboard/Slider/Slider";
 import HomePage from "./Pages/Homepage/HomePage";
 import Login from "./Pages/Login/Login";
 import ResetPass from "./Pages/ResetPass/ResetPass";
@@ -57,6 +58,14 @@ function App() {
 								element={
 									<AdminRoute>
 										<PageRols />
+									</AdminRoute>
+								}
+							/>
+							<Route
+								path='/dashboard/slider'
+								element={
+									<AdminRoute>
+										<Slider />
 									</AdminRoute>
 								}
 							/>

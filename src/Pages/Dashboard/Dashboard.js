@@ -21,11 +21,12 @@ import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import GroupIcon from "@mui/icons-material/Group";
+import { Alert } from "@mui/material";
 
 const drawerWidth = 222;
 
 function Dashboard(props) {
-	const { logOut, admin } = useAuth();
+	const { logOut, admin, user } = useAuth();
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const handleDrawerToggle = () => {
@@ -99,6 +100,7 @@ function Dashboard(props) {
 								<ListItemText primary={"All Reviews"} />
 							</ListItem>
 						</Link>
+
 						<Link
 							style={{
 								textDecoration: "none",
@@ -230,6 +232,12 @@ function Dashboard(props) {
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 				}}>
 				<Toolbar />
+				{user?.emailVerified === false && (
+					<Alert severity='error' sx={{ my: 1 }}>
+						Your Email Is Not Verified. Please Check Your Inbox And Follow The
+						Steps
+					</Alert>
+				)}
 				<Outlet></Outlet>
 			</Box>
 		</Box>

@@ -49,6 +49,7 @@ const SingleBlog = () => {
 			userPhoto: singleUser?.photoURL,
 			userName: singleUser?.displayName,
 			userEmail: singleUser?.email,
+			postTime: new Date().toLocaleString(),
 		};
 		console.log(userReview);
 		axios

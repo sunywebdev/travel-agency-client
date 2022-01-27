@@ -1,9 +1,9 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, Container, Grid, Pagination, Rating } from "@mui/material";
+import { Button, Container, Grid, Rating } from "@mui/material";
 import ReadMoreIcon from "@mui/icons-material/ReadMore";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -11,12 +11,22 @@ import DateRangeIcon from "@mui/icons-material/DateRange";
 import CreateIcon from "@mui/icons-material/Create";
 
 export default function Blogs() {
-	const [blogs, setBlogs] = React.useState([]);
-	React.useEffect(() => {
-		fetch(`https://pure-forest-30659.herokuapp.com/blogs`)
+	const [page, setPage] = useState(0);
+	const [pageCount, setPageCount] = useState(0);
+	const [blogs, setBlogs] = useState([]);
+	const size = 2;
+	useEffect(() => {
+		fetch(
+			`https://pure-forest-30659.herokuapp.com/allblogs?page=${page}&&size=${size}`,
+		)
 			.then((res) => res.json())
-			.then((data) => setBlogs(data.reverse()));
-	}, []);
+			.then((data) => {
+				setBlogs(data.products);
+				const count = data.count;
+				const pageNumber = Math.ceil(count / size);
+				setPageCount(pageNumber);
+			});
+	}, [page]);
 
 	return (
 		<Container>
@@ -102,12 +112,16 @@ export default function Blogs() {
 					</Grid>
 				))}
 			</Grid>
-			<Pagination
-				count={10}
-				variant='outlined'
-				color='primary'
-				sx={{ my: 1, "& .MuiPagination-ul": { justifyContent: "center" } }}
-			/>
+			<div className='pagination'>
+				{[...Array(pageCount).keys()].map((number) => (
+					<button
+						className={number === page ? "selected" : ""}
+						key={number}
+						onClick={() => setPage(number)}>
+						{number + 1}
+					</button>
+				))}
+			</div>
 		</Container>
 	);
 }
