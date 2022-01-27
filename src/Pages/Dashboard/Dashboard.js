@@ -25,7 +25,7 @@ import GroupIcon from "@mui/icons-material/Group";
 const drawerWidth = 222;
 
 function Dashboard(props) {
-	const { logOut, user } = useAuth();
+	const { logOut, admin } = useAuth();
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
 	const handleDrawerToggle = () => {
@@ -34,24 +34,39 @@ function Dashboard(props) {
 	const drawer = (
 		<div>
 			<List>
-				{user && (
+				<Link
+					style={{
+						textDecoration: "none",
+						fontWeight: "bold",
+						fontSize: "15px",
+						color: "#02598b",
+					}}
+					to=''>
+					<ListItem button>
+						<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
+							<MenuBookIcon />
+						</ListItemIcon>
+						<ListItemText primary={"My Reviews"} />
+					</ListItem>
+				</Link>
+
+				<Link
+					style={{
+						textDecoration: "none",
+						fontWeight: "bold",
+						fontSize: "15px",
+						color: "#02598b",
+					}}
+					to='addblog'>
+					<ListItem button>
+						<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
+							<MenuBookIcon />
+						</ListItemIcon>
+						<ListItemText primary={"Add New Blog"} />
+					</ListItem>
+				</Link>
+				{admin && (
 					<>
-						<Link
-							style={{
-								textDecoration: "none",
-								fontWeight: "bold",
-								fontSize: "15px",
-								color: "#02598b",
-							}}
-							to=''>
-							<ListItem button>
-								<ListItemIcon
-									sx={{ justifyContent: "center", color: "#02598b" }}>
-									<MenuBookIcon />
-								</ListItemIcon>
-								<ListItemText primary={"Add New Blog"} />
-							</ListItem>
-						</Link>
 						<Link
 							style={{
 								textDecoration: "none",
@@ -68,7 +83,6 @@ function Dashboard(props) {
 								<ListItemText primary={"All Blogs"} />
 							</ListItem>
 						</Link>
-
 						<Link
 							style={{
 								textDecoration: "none",

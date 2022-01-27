@@ -13,8 +13,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../context/useAuth";
 
 export default function SignUp() {
-	const { createNewUserUsingEmailPassword, signInUsingGoogle, auth } =
-		useAuth();
+	const {
+		createNewUserUsingEmailPassword,
+		signInUsingGoogle,
+		auth,
+	} = useAuth();
 	const { register, handleSubmit } = useForm();
 	const location = useLocation();
 	const navigate = useNavigate();

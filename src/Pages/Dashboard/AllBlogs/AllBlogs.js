@@ -14,6 +14,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
+import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AllBlogs = () => {
 	const [deleted, setDeleted] = useState(false);
@@ -23,6 +25,69 @@ const AllBlogs = () => {
 			.then((res) => res.json())
 			.then((data) => setBlogs(data));
 	}, [deleted]);
+
+	const handleConfirm = (blogID) => {
+		const confirmation = {
+			blogID: blogID,
+			confirmation: "Approved",
+		};
+
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, Approve it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.put(
+						`https://pure-forest-30659.herokuapp.com/blogconfirmation`,
+						confirmation,
+					)
+					.then(function (response) {
+						Swal.fire("Success!", "That blog has been Approved.", "success");
+						setDeleted(true);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
+	};
+	const handleCancel = (blogID) => {
+		const confirmation = {
+			blogID: blogID,
+			confirmation: "Cancelled",
+		};
+
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, Cancel it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.put(
+						`https://pure-forest-30659.herokuapp.com/blogconfirmation`,
+						confirmation,
+					)
+					.then(function (response) {
+						Swal.fire("Success!", "That blog has been Cancelled.", "success");
+						setDeleted(true);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
+	};
 
 	const handleDelete = (id) => {
 		Swal.fire({
@@ -83,33 +148,69 @@ const AllBlogs = () => {
 										Author
 									</TableCell>
 									<TableCell className='color-theme' align='left'>
+										Status
+									</TableCell>
+									<TableCell className='color-theme' align='left'>
 										Action
 									</TableCell>
 								</TableRow>
 							</TableHead>
 							{blogs?.length > 0 ? (
 								<TableBody sx={{ td: { py: 1 } }}>
-									{blogs.map((book) => (
+									{blogs.map((blog) => (
 										<TableRow
-											key={book?._id}
+											key={blog?._id}
 											sx={{
 												"&:last-child td, &:last-child th": { border: 0 },
 											}}>
 											<TableCell align='left'>{count++}</TableCell>
 
 											<TableCell align='left'>
-												{book?.blogTitle || "N/A"}
+												{blog?.blogTitle || "N/A"}
 											</TableCell>
 											<TableCell align='left'>
-												{book?.postTime || "N/A"}
+												{blog?.postTime || "N/A"}
 											</TableCell>
 											<TableCell align='left'>
-												{book?.publishedBy || "N/A"}
+												{blog?.publishedBy || "N/A"}
 											</TableCell>
 											<TableCell align='left'>
+												{blog?.confirmation || "N/A"}
+											</TableCell>
+											<TableCell align='left'>
+												{blog?.confirmation === "Approved" ? (
+													<> </>
+												) : (
+													<Button
+														className='button border'
+														onClick={() => handleConfirm(blog?.blogID)}
+														sx={{
+															fontWeight: "bold",
+															border: "2px solid",
+															borderRadius: "25px",
+														}}
+														variant='contained'>
+														<DoneOutlineIcon />
+													</Button>
+												)}
+												{blog?.confirmation === "Cancelled" ? (
+													<> </>
+												) : (
+													<Button
+														className='button border'
+														onClick={() => handleCancel(blog?.blogID)}
+														sx={{
+															fontWeight: "bold",
+															border: "2px solid",
+															borderRadius: "25px",
+														}}
+														variant='contained'>
+														<CloseIcon />
+													</Button>
+												)}
 												<Button
 													className='button border'
-													onClick={() => handleDelete(book?._id)}
+													onClick={() => handleDelete(blog?._id)}
 													sx={{
 														fontWeight: "bold",
 														border: "2px solid",
@@ -125,6 +226,7 @@ const AllBlogs = () => {
 							) : (
 								<TableHead sx={{ th: { fontWeight: "bold" } }}>
 									<TableRow>
+										<TableCell align='left'>N/A</TableCell>
 										<TableCell align='left'>N/A</TableCell>
 										<TableCell align='left'>N/A</TableCell>
 										<TableCell align='left'>N/A</TableCell>

@@ -9,6 +9,7 @@ import {
 	signInWithEmailAndPassword,
 	sendPasswordResetEmail,
 	getIdToken,
+	sendEmailVerification,
 } from "firebase/auth";
 import initializeAuth from "./firebase.init";
 import axios from "axios";
@@ -81,6 +82,7 @@ const useFirebase = () => {
 		setIsloading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((res) => {
+				sendEmailVerification(auth.currentUser);
 				setUser(res.user);
 				saveUserToDb(email, displayName, navigate, location);
 			})
@@ -142,11 +144,11 @@ const useFirebase = () => {
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",
-					title: "Acccount Creation Successfull",
-					showConfirmButton: false,
-					timer: 2000,
+					title: "Please Check Your Email Inbox to Verify New Account",
+					showConfirmButton: true,
+					timer: 3000,
 				}).then(function () {
-					const destination = location?.state?.from || "/";
+					const destination = location?.state?.from || "/login";
 					navigate(destination);
 				});
 			})
@@ -155,7 +157,7 @@ const useFirebase = () => {
 					icon: "error",
 					title: error,
 					showConfirmButton: false,
-					timer: 2000,
+					timer: 3000,
 				});
 				console.log(error);
 			});

@@ -62,6 +62,7 @@ const AddBlog = () => {
 			details,
 			blogID,
 			catagory,
+			confirmation: "Pending",
 		};
 		setSubmitting(true);
 		axios

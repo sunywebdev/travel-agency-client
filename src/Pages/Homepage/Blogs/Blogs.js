@@ -29,74 +29,76 @@ export default function Blogs() {
 			<Grid container spacing={2} sx={{ mb: 2 }}>
 				{blogs?.map((blog) => (
 					<Grid item md={12} xs={12}>
-						<Card sx={{ borderRadius: 2 }}>
-							<CardMedia
-								component='img'
-								height='400'
-								image={blog?.imageLink}
-								alt=''
-							/>
-							<CardContent sx={{ textAlign: "left" }}>
-								<Grid container sx={{ mb: 2 }}>
-									<Grid item xs>
-										<Box sx={{ display: "flex", justifyContent: "center" }}>
-											<DateRangeIcon />
-											<Typography
-												sx={{ ml: 0.5 }}
-												gutterBottom
-												variant='button'
-												component='div'>
-												{blog?.postTime}
-											</Typography>
-										</Box>
+						{blog?.confirmation === "Approved" && (
+							<Card sx={{ borderRadius: 2 }}>
+								<CardMedia
+									component='img'
+									height='400'
+									image={blog?.imageLink}
+									alt=''
+								/>
+								<CardContent sx={{ textAlign: "left" }}>
+									<Grid container sx={{ mb: 2 }}>
+										<Grid item xs>
+											<Box sx={{ display: "flex", justifyContent: "center" }}>
+												<DateRangeIcon />
+												<Typography
+													sx={{ ml: 0.5 }}
+													gutterBottom
+													variant='button'
+													component='div'>
+													{blog?.postTime}
+												</Typography>
+											</Box>
+										</Grid>
+										<Grid item xs>
+											<Box sx={{ display: "flex", justifyContent: "center" }}>
+												<CreateIcon />
+												<Typography
+													sx={{ ml: 0.5 }}
+													gutterBottom
+													variant='button'
+													component='div'>
+													{blog?.publishedBy}
+												</Typography>
+											</Box>
+										</Grid>
+										<Grid item xs>
+											<Box
+												sx={{
+													display: "flex",
+													alignItems: "center",
+												}}>
+												<Rating
+													name='disabled'
+													value={blog?.rating || 0}
+													readOnly
+												/>
+												<Typography
+													variant='subtitle1'
+													sx={{ ml: 0.5 }}
+													color='text.secondary'>
+													{blog?.rating || 0}({blog?.totalRating || 0})
+												</Typography>
+											</Box>
+										</Grid>
 									</Grid>
-									<Grid item xs>
-										<Box sx={{ display: "flex", justifyContent: "center" }}>
-											<CreateIcon />
-											<Typography
-												sx={{ ml: 0.5 }}
-												gutterBottom
-												variant='button'
-												component='div'>
-												{blog?.publishedBy}
-											</Typography>
-										</Box>
-									</Grid>
-									<Grid item xs>
-										<Box
-											sx={{
-												display: "flex",
-												alignItems: "center",
-											}}>
-											<Rating
-												name='disabled'
-												value={blog?.rating || 0}
-												readOnly
-											/>
-											<Typography
-												variant='subtitle1'
-												sx={{ ml: 0.5 }}
-												color='text.secondary'>
-												{blog?.rating || 0}({blog?.totalRating || 0})
-											</Typography>
-										</Box>
-									</Grid>
-								</Grid>
 
-								<Typography gutterBottom variant='h4'>
-									{blog?.blogTitle}
-								</Typography>
-								<Typography variant='button' color='text.secondary'>
-									{blog?.details?.slice(0, 400)}......
-								</Typography>
-								<br />
-								<Link
-									to={`/blog/${blog?._id}`}
-									style={{ textDecoration: "none" }}>
-									<Button endIcon={<ReadMoreIcon />}>Read More</Button>
-								</Link>
-							</CardContent>
-						</Card>
+									<Typography gutterBottom variant='h4'>
+										{blog?.blogTitle}
+									</Typography>
+									<Typography variant='button' color='text.secondary'>
+										{blog?.details?.slice(0, 400)}......
+									</Typography>
+									<br />
+									<Link
+										to={`/blog/${blog?._id}`}
+										style={{ textDecoration: "none" }}>
+										<Button endIcon={<ReadMoreIcon />}>Read More</Button>
+									</Link>
+								</CardContent>
+							</Card>
+						)}
 					</Grid>
 				))}
 			</Grid>
