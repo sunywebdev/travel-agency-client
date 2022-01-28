@@ -30,10 +30,11 @@ const Banner = () => {
 							<Card
 								sx={{
 									width: "100%",
-									height: { md: "100vh", sm: "80vh", xs: "60vh" },
+									height: { md: "100vh", sm: "80vh", xs: "70vh" },
 									backgroundImage: `url(${slider?.imageLink2})`,
 									backgroundSize: "cover",
 									color: "white",
+									"& .MuiCardContent-root": { padding: 0 },
 								}}>
 								<CardContent
 									sx={{
