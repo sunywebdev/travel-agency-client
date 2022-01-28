@@ -15,13 +15,14 @@ import Typography from "@mui/material/Typography";
 import { Link, Outlet } from "react-router-dom";
 import Logout from "@mui/icons-material/Logout";
 import HomeIcon from "@mui/icons-material/Home";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
 import useAuth from "../../context/useAuth";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import GroupIcon from "@mui/icons-material/Group";
 import { Alert } from "@mui/material";
+import CollectionsIcon from "@mui/icons-material/Collections";
+import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 
 const drawerWidth = 222;
 
@@ -44,7 +45,7 @@ function Dashboard(props) {
 					to=''>
 					<ListItem button className='color'>
 						<ListItemIcon sx={{ justifyContent: "center" }}>
-							<MenuBookIcon className='color' />
+							<ReviewsIcon className='color' />
 						</ListItemIcon>
 						<ListItemText primary={"My Reviews"} />
 					</ListItem>
@@ -59,7 +60,7 @@ function Dashboard(props) {
 					to='addblog'>
 					<ListItem button className='color'>
 						<ListItemIcon sx={{ justifyContent: "center" }}>
-							<MenuBookIcon className='color' />
+							<BookmarkAddIcon className='color' />
 						</ListItemIcon>
 						<ListItemText primary={"Add New Blog"} />
 					</ListItem>
@@ -104,7 +105,7 @@ function Dashboard(props) {
 							to='slider'>
 							<ListItem button className='color'>
 								<ListItemIcon sx={{ justifyContent: "center" }}>
-									<VerifiedUserIcon className='color' />
+									<CollectionsIcon className='color' />
 								</ListItemIcon>
 								<ListItemText primary={"Slider"} />
 							</ListItem>

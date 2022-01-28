@@ -13,11 +13,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../context/useAuth";
 
 export default function SignUp() {
-	const {
-		createNewUserUsingEmailPassword,
-		signInUsingGoogle,
-		auth,
-	} = useAuth();
+	const { createNewUserUsingEmailPassword, signInUsingGoogle, auth } =
+		useAuth();
 	const { register, handleSubmit } = useForm();
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -45,10 +42,10 @@ export default function SignUp() {
 					flexDirection: "column",
 					alignItems: "center",
 				}}>
-				<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+				<Avatar sx={{ m: 1 }} className='button'>
 					<LockOutlinedIcon />
 				</Avatar>
-				<Typography component='h1' variant='h5'>
+				<Typography component='h1' variant='h5' className='color'>
 					Sign up
 				</Typography>
 				<form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: 3 }}>
@@ -93,13 +90,10 @@ export default function SignUp() {
 						type='submit'
 						fullWidth
 						variant='contained'
+						className='button'
 						sx={{
 							mt: 3,
 							mb: 2,
-							backgroundColor: "#02598b",
-							"&.MuiButtonBase-root:hover": {
-								bgcolor: "#02598b",
-							},
 						}}>
 						Sign Up
 					</Button>
@@ -107,13 +101,10 @@ export default function SignUp() {
 						onClick={handleGoogleSignUp}
 						fullWidth
 						variant='contained'
+						className='button'
 						sx={{
 							mt: 3,
 							mb: 2,
-							backgroundColor: "#02598b",
-							"&.MuiButtonBase-root:hover": {
-								bgcolor: "#02598b",
-							},
 						}}>
 						Sign Up With Google
 					</Button>

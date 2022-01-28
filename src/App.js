@@ -24,7 +24,14 @@ function App() {
 				<BrowserRouter>
 					<Routes>
 						<Route path='/' element={<HomePage />} />
-						<Route path='/blog/:id' element={<SingleBlog />} />
+						<Route
+							path='/blog/:id'
+							element={
+								<PrivateRoute>
+									<SingleBlog />
+								</PrivateRoute>
+							}
+						/>
 						<Route path='/signup' element={<SignUp />} />
 						<Route path='/login' element={<Login />} />
 						<Route path='/resetpass' element={<ResetPass />} />

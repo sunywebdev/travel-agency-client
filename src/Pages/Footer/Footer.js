@@ -11,7 +11,7 @@ import React from "react";
 
 const Footer = () => {
 	return (
-		<>
+		<div className="footer">
 			<Divider />
 			<Container sx={{ pt: 3 }}>
 				<Grid container spacing={2}>
@@ -92,7 +92,7 @@ const Footer = () => {
 				sx={{ textAlign: "center", py: 2 }}>
 				&copy; 2022 All Rights Reserved
 			</Typography>
-		</>
+		</div>
 	);
 };
 

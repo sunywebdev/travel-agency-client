@@ -31,10 +31,10 @@ export default function ResetPass() {
 					flexDirection: "column",
 					alignItems: "center",
 				}}>
-				<Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+				<Avatar sx={{ m: 1 }} className='button'>
 					<LockOutlinedIcon />
 				</Avatar>
-				<Typography component='h1' variant='h5'>
+				<Typography component='h1' variant='h5' className='color'>
 					Reset Password
 				</Typography>
 				<form onSubmit={handleSubmit(onSubmit)} style={{ marginTop: 3 }}>
@@ -51,16 +51,13 @@ export default function ResetPass() {
 						{...register("email", { required: true })}
 					/>
 					<Button
+						className='button'
 						type='submit'
 						fullWidth
 						variant='contained'
 						sx={{
 							mt: 3,
 							mb: 2,
-							backgroundColor: "#02598b",
-							"&.MuiButtonBase-root:hover": {
-								bgcolor: "#02598b",
-							},
 						}}>
 						Reset Password
 					</Button>

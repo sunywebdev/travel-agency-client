@@ -23,7 +23,6 @@ export default function SideBar() {
 		const allBlogs = blogs?.filter(function (obj) {
 			return obj?.totalRating !== 0;
 		});
-		console.log(allBlogs);
 		const short = allBlogs?.sort((a, b) =>
 			parseInt(a.totalRating) < parseInt(b.totalRating) ? -1 : 1,
 		);

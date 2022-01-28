@@ -56,7 +56,6 @@ const SingleBlog = () => {
 			userEmail: singleUser?.email,
 			postTime: new Date().toLocaleString(),
 		};
-		console.log(userReview);
 		axios
 			.post(`https://pure-forest-30659.herokuapp.com/reviews`, userReview)
 			.then(function (response) {
