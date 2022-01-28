@@ -90,8 +90,9 @@ const SingleBlog = () => {
 	const [reviews, setReviews] = React.useState([]);
 	React.useEffect(() => {
 		let filter = reviews?.filter(({ blogID }) => blogID === blog?.blogID);
-		const avg = filter?.reduce((r, c) => r + c?.rating, 0) / filter?.length;
-		setStarAvg(avg.toFixed(1));
+		const avg =
+			filter?.reduce((r, c) => r + c?.rating, 0) / filter?.length || 0;
+		setStarAvg(avg?.toFixed(1));
 	}, [blog?.blogID, reviews]);
 
 	React.useEffect(() => {
@@ -100,18 +101,7 @@ const SingleBlog = () => {
 		)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
-		const save = {
-			blogID: blog?.blogID,
-			rating: starAvg || 0,
-			totalRating: reviews?.length,
-		};
-		axios
-			.put(`https://pure-forest-30659.herokuapp.com/blogRating`, save)
-			.then(function (response) {})
-			.catch(function (error) {
-				console.log(error);
-			});
-	}, [blog?.blogID, reviews?.length, starAvg, submitting]);
+	}, [blog?.blogID, submitting]);
 
 	const [singleUser, setSingleUser] = React.useState();
 	React.useEffect(() => {
@@ -124,6 +114,22 @@ const SingleBlog = () => {
 				setSingleUser(data);
 			});
 	}, [reset, user?.email]);
+
+	React.useEffect(() => {
+		if (blog?._id) {
+			const save = {
+				blogID: blog?.blogID,
+				rating: parseFloat(starAvg),
+				totalRating: reviews?.length,
+			};
+			axios
+				.put(`https://pure-forest-30659.herokuapp.com/blogRating`, save)
+				.then(function (response) {})
+				.catch(function (error) {
+					console.log(error);
+				});
+		}
+	}, [blog?._id, blog?.blogID, reviews?.length, starAvg]);
 
 	return (
 		<>
@@ -202,7 +208,7 @@ const SingleBlog = () => {
 
 									<Typography
 										gutterBottom
-										variant='h3'
+										variant='h4'
 										className='color'
 										sx={{ fontWeight: "bold" }}>
 										{blog?.blogTitle}
@@ -340,7 +346,7 @@ const SingleBlog = () => {
 											<Box display='flex'>
 												<Rating
 													className='color'
-													precision={0.1}
+													precision={0.5}
 													sx={{ fontSize: 40 }}
 													name='simple-controlled'
 													value={value}
@@ -392,55 +398,48 @@ const SingleBlog = () => {
 									className='color'>
 									Community Reviews
 								</Typography>
-								{reviews?.length ? (
-									<>
-										{reviews?.length > 0 ? (
-											<List
-												sx={{
-													width: "100%",
-													bgcolor: "background.paper",
-												}}>
-												{reviews.map((review) => (
-													<>
-														<ListItem alignItems='flex-start'>
-															<ListItemAvatar>
-																<Avatar alt='' src={review?.userPhoto} />
-															</ListItemAvatar>
-															<ListItemText
-																primary={review?.userName}
-																secondary={
-																	<React.Fragment>
-																		<Typography
-																			sx={{ display: "inline" }}
-																			component='span'
-																			variant='body2'
-																			color='text.primary'>
-																			{review?.rating}
-																			<StarIcon fontSize='5px' sx={{ mr: 1 }} />
-																		</Typography>
-																		{review?.review}
-																	</React.Fragment>
-																}
-															/>
-														</ListItem>
-														<Divider variant='inset' component='li' />
-													</>
-												))}
-											</List>
-										) : (
-											<Typography
-												gutterBottom
-												variant='h6'
-												component='div'
-												sx={{ my: 2 }}>
-												No Reviews
-											</Typography>
-										)}
-									</>
+
+								{reviews?.length > 0 ? (
+									<List
+										sx={{
+											width: "100%",
+											bgcolor: "background.paper",
+										}}>
+										{reviews.map((review) => (
+											<>
+												<ListItem alignItems='flex-start'>
+													<ListItemAvatar>
+														<Avatar alt='' src={review?.userPhoto} />
+													</ListItemAvatar>
+													<ListItemText
+														primary={review?.userName}
+														secondary={
+															<React.Fragment>
+																<Typography
+																	sx={{ display: "inline" }}
+																	component='span'
+																	variant='body2'
+																	color='text.primary'>
+																	{review?.rating}
+																	<StarIcon fontSize='5px' sx={{ mr: 1 }} />
+																</Typography>
+																{review?.review}
+															</React.Fragment>
+														}
+													/>
+												</ListItem>
+												<Divider variant='inset' component='li' />
+											</>
+										))}
+									</List>
 								) : (
-									<div className='loader'>
-										<PropagateLoader size={10} />
-									</div>
+									<Typography
+										gutterBottom
+										variant='h6'
+										component='div'
+										sx={{ my: 2 }}>
+										No Reviews
+									</Typography>
 								)}
 							</Paper>
 						</Grid>

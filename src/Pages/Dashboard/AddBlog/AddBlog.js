@@ -59,6 +59,8 @@ const AddBlog = () => {
 			publishedBy,
 			publisherPhoto: user?.photoURL,
 			postTime: new Date().toLocaleString(),
+			totalRating: 0,
+			rating: 0,
 			totalDays,
 			totalCost,
 			location,

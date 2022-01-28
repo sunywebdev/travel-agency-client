@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import { Link } from "react-router-dom";
 
 export default function RecentBlogs() {
 	const [blogs, setBlogs] = React.useState([]);
@@ -40,47 +41,52 @@ export default function RecentBlogs() {
 						<>
 							{blog?.confirmation === "Approved" && (
 								<>
-									<ListItem alignItems='center' sx={{ p: 0 }}>
-										<ListItemAvatar sx={{ mr: 1 }}>
-											<CardMedia
-												component='img'
-												height='50'
-												image={blog?.imageLink}
-												alt=''
-											/>
-										</ListItemAvatar>
-										<ListItemText
-											className='color'
-											primary={blog?.blogTitle}
-											secondary={
-												<React.Fragment>
-													<Grid container>
-														<Grid item xs>
-															<Box
-																sx={{
-																	display: "flex",
-																	alignItems: "center",
-																}}>
-																<Rating
-																	className='color'
-																	precision={0.1}
-																	name='disabled'
-																	value={blog?.rating || 0}
-																	readOnly
-																/>
-																<Typography
-																	variant='subtitle1'
-																	sx={{ ml: 0.5 }}
-																	color='text.secondary'>
-																	{blog?.rating || 0} ({blog?.totalRating || 0})
-																</Typography>
-															</Box>
+									<Link
+										to={`/blog/${blog?._id}`}
+										style={{ textDecoration: "none" }}>
+										<ListItem alignItems='center' sx={{ p: 0 }}>
+											<ListItemAvatar sx={{ mr: 1 }}>
+												<CardMedia
+													component='img'
+													height='50'
+													image={blog?.imageLink}
+													alt=''
+												/>
+											</ListItemAvatar>
+											<ListItemText
+												className='color'
+												primary={blog?.blogTitle}
+												secondary={
+													<React.Fragment>
+														<Grid container>
+															<Grid item xs>
+																<Box
+																	sx={{
+																		display: "flex",
+																		alignItems: "center",
+																	}}>
+																	<Rating
+																		className='color'
+																		precision={0.1}
+																		name='disabled'
+																		value={blog?.rating || 0}
+																		readOnly
+																	/>
+																	<Typography
+																		variant='subtitle1'
+																		sx={{ ml: 0.5 }}
+																		color='text.secondary'>
+																		{blog?.rating || 0} (
+																		{blog?.totalRating || 0})
+																	</Typography>
+																</Box>
+															</Grid>
 														</Grid>
-													</Grid>
-												</React.Fragment>
-											}
-										/>
-									</ListItem>
+													</React.Fragment>
+												}
+											/>
+										</ListItem>
+									</Link>
 									<Divider variant='inset' component='li' />
 								</>
 							)}
