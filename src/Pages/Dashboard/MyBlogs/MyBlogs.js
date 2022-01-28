@@ -14,8 +14,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
-import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
-import CloseIcon from "@mui/icons-material/Close";
 import useAuth from "../../../context/useAuth";
 
 const MyBlogs = () => {
