@@ -58,6 +58,7 @@ const AddBlog = () => {
 			blogTitle,
 			publishedBy,
 			publisherPhoto: user?.photoURL,
+			userEmail: user?.email,
 			postTime: new Date().toLocaleString(),
 			totalRating: 0,
 			rating: 0,

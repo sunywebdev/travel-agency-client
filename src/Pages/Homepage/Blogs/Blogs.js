@@ -39,8 +39,8 @@ export default function Blogs() {
 			</Typography>
 			{blogs?.length ? (
 				<Grid container spacing={2} sx={{ mb: 2 }}>
-					{blogs?.map((blog) => (
-						<Grid item md={12} xs={12}>
+					{blogs?.map((blog, i) => (
+						<Grid item md={12} xs={12} key={i}>
 							{blog?.confirmation === "Approved" && (
 								<Card
 									elevation={3}

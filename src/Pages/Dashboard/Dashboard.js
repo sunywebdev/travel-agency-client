@@ -65,6 +65,20 @@ function Dashboard(props) {
 						<ListItemText primary={"Add New Blog"} />
 					</ListItem>
 				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='myblogs'>
+					<ListItem button className='color'>
+						<ListItemIcon sx={{ justifyContent: "center" }}>
+							<LocalLibraryIcon className='color' />
+						</ListItemIcon>
+						<ListItemText primary={"My Blogs"} />
+					</ListItem>
+				</Link>
 				{admin && (
 					<>
 						<Link

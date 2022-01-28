@@ -44,11 +44,12 @@ export default function SideBar() {
 			</Typography>
 			{blogs?.length ? (
 				<List sx={{ width: "100%", bgcolor: "background.paper" }}>
-					{SortData?.map((blog) => (
+					{SortData?.map((blog, i) => (
 						<>
 							{blog?.confirmation === "Approved" && (
 								<>
 									<Link
+										key={i}
 										to={`/blog/${blog?._id}`}
 										style={{ textDecoration: "none" }}>
 										<ListItem alignItems='center' sx={{ p: 0 }}>

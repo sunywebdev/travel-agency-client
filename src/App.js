@@ -7,6 +7,7 @@ import AllBlogs from "./Pages/Dashboard/AllBlogs/AllBlogs";
 import AllReviews from "./Pages/Dashboard/AllReviews/AllReviews";
 import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyBlogs from "./Pages/Dashboard/MyBlogs/MyBlogs";
 import MyReviews from "./Pages/Dashboard/MyReviews/MyReviews";
 import PageRols from "./Pages/Dashboard/PageRols/PageRols";
 import Slider from "./Pages/Dashboard/Slider/Slider";
@@ -43,6 +44,14 @@ function App() {
 								</PrivateRoute>
 							}>
 							<Route path='/dashboard' element={<MyReviews />} />
+							<Route
+								path='/dashboard/myblogs'
+								element={
+									<PrivateRoute>
+										<MyBlogs />
+									</PrivateRoute>
+								}
+							/>
 							<Route path='/dashboard/addblog' element={<AddBlog />} />
 							<Route
 								path='/dashboard/allblogs'
