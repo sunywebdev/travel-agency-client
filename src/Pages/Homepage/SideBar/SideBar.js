@@ -7,6 +7,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Typography from "@mui/material/Typography";
 import { CardMedia, Grid, Rating } from "@mui/material";
 import { Box } from "@mui/system";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 export default function SideBar() {
 	const [blogs, setBlogs] = React.useState([]);
@@ -18,10 +19,11 @@ export default function SideBar() {
 
 	const [SortData, setSortData] = React.useState([]);
 	React.useEffect(() => {
-		const short = blogs?.sort(
-			(a, b) => parseFloat(a?.totalRating) - parseFloat(b?.totalRating),
+		const short = blogs?.sort((a, b) =>
+			parseInt(a.totalRating) < parseInt(b.totalRating) ? -1 : 1,
 		);
-		setSortData(short.reverse().slice(0, 5));
+
+		setSortData(short.slice(0, 6).reverse());
 	}, [blogs?.blogID, blogs]);
 
 	return (
@@ -34,53 +36,66 @@ export default function SideBar() {
 				variant='h5'
 				component='div'
 				sx={{ mb: 2, fontWeight: "bold" }}>
-				TOP-RATED BLOGS
+				<span className='color'> TOP-RATED</span> BLOGS
 			</Typography>
-			<List sx={{ width: "100%", bgcolor: "background.paper" }}>
-				{SortData?.map((blog) => (
-					<>
-						<ListItem alignItems='center' sx={{ p: 0 }}>
-							<ListItemAvatar sx={{ mr: 1 }}>
-								<CardMedia
-									component='img'
-									height='50'
-									image={blog?.imageLink}
-									alt=''
-								/>
-							</ListItemAvatar>
-							<ListItemText
-								primary={blog?.blogTitle}
-								secondary={
-									<React.Fragment>
-										<Grid container>
-											<Grid item xs>
-												<Box
-													sx={{
-														display: "flex",
-														alignItems: "center",
-													}}>
-													<Rating
-														name='disabled'
-														value={blog?.rating || 0}
-														readOnly
-													/>
-													<Typography
-														variant='subtitle1'
-														sx={{ ml: 0.5 }}
-														color='text.secondary'>
-														{blog?.rating || 0} ({blog?.totalRating || 0})
-													</Typography>
-												</Box>
-											</Grid>
-										</Grid>
-									</React.Fragment>
-								}
-							/>
-						</ListItem>
-						<Divider variant='inset' component='li' />
-					</>
-				))}
-			</List>
+			{blogs?.length ? (
+				<List sx={{ width: "100%", bgcolor: "background.paper" }}>
+					{SortData?.map((blog) => (
+						<>
+							{blog?.confirmation === "Approved" && (
+								<>
+									<ListItem alignItems='center' sx={{ p: 0 }}>
+										<ListItemAvatar sx={{ mr: 1 }}>
+											<CardMedia
+												component='img'
+												height='50'
+												image={blog?.imageLink}
+												alt=''
+											/>
+										</ListItemAvatar>
+										<ListItemText
+											className='color'
+											primary={blog?.blogTitle}
+											secondary={
+												<React.Fragment>
+													<Grid container>
+														<Grid item xs>
+															<Box
+																sx={{
+																	display: "flex",
+																	alignItems: "center",
+																}}>
+																<Rating
+																	className='color'
+																	precision={0.1}
+																	name='disabled'
+																	value={blog?.rating || 0}
+																	readOnly
+																/>
+																<Typography
+																	variant='subtitle1'
+																	sx={{ ml: 0.5 }}
+																	color='text.secondary'>
+																	{blog?.rating || 0} ({blog?.totalRating || 0})
+																</Typography>
+															</Box>
+														</Grid>
+													</Grid>
+												</React.Fragment>
+											}
+										/>
+									</ListItem>
+									<Divider variant='inset' component='li' />
+								</>
+							)}
+						</>
+					))}
+				</List>
+			) : (
+				<div className='loader'>
+					<PropagateLoader size={10} />
+				</div>
+			)}
 		</div>
 	);
 }

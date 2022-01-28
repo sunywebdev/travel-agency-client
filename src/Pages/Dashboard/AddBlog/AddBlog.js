@@ -15,8 +15,10 @@ import Swal from "sweetalert2";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
+import useAuth from "../../../context/useAuth";
 
 const AddBlog = () => {
+	const { user } = useAuth();
 	const [submitting, setSubmitting] = useState(false);
 	const [imageLink, setImageLink] = useState(null);
 	const [loading, setLoading] = useState(false);
@@ -55,6 +57,7 @@ const AddBlog = () => {
 			imageLink: imageLink,
 			blogTitle,
 			publishedBy,
+			publisherPhoto: user?.photoURL,
 			postTime: new Date().toLocaleString(),
 			totalDays,
 			totalCost,
@@ -87,10 +90,10 @@ const AddBlog = () => {
 	return (
 		<Container>
 			<Typography
-				className='textColor'
-				sx={{ fontWeight: 900, mb: 3.5, color: "#02598b" }}
+				sx={{ fontWeight: 900, mb: 3.5 }}
 				variant='h4'
 				component='div'
+				className='color'
 				gutterBottom>
 				Add New Blog
 			</Typography>
@@ -103,12 +106,11 @@ const AddBlog = () => {
 						mt: 3,
 						mb: 2,
 						mx: "auto",
-						border: "1px solid",
-						color: "black",
+						color: "white",
 					}}>
 					<label
 						htmlFor='icon-button-file'
-						className='bgColor'
+						className='button'
 						style={{
 							display: "flex",
 							alignItems: "center",
@@ -129,7 +131,10 @@ const AddBlog = () => {
 							color='primary'
 							aria-label='upload picture'
 							component='span'>
-							<AttachFileIcon fontSize='large' sx={{ fontWeight: "bold" }} />
+							<AttachFileIcon
+								fontSize='large'
+								sx={{ fontWeight: "bold", color: "white" }}
+							/>
 						</IconButton>
 					</label>
 
@@ -163,6 +168,7 @@ const AddBlog = () => {
 									required
 									sx={{ width: "100%" }}
 									id='outlined-basic'
+									defaultValue={user?.displayName}
 									name='publishedBy'
 									label='Published By'
 									{...register("publishedBy", { required: true })}
@@ -235,7 +241,7 @@ const AddBlog = () => {
 					</Grid>
 				</Grid>
 				<Button
-					className='sendButton'
+					className='button'
 					type='submit'
 					variant='contained'
 					sx={{

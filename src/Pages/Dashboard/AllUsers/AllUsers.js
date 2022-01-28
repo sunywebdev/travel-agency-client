@@ -57,7 +57,7 @@ const AllUsers = () => {
 			}}>
 			<Grid>
 				<Typography
-					className='color-theme'
+					className='color'
 					sx={{ mb: 3, fw: "bold", color: "#02598b" }}
 					variant='h4'
 					component='div'
@@ -71,19 +71,19 @@ const AllUsers = () => {
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										No
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Photo
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Name
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Email
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Action
 									</TableCell>
 								</TableRow>
@@ -112,7 +112,7 @@ const AllUsers = () => {
 											<TableCell align='left'>{user?.email || "N/A"}</TableCell>
 											<TableCell align='left'>
 												<Button
-													className='button border'
+													className='button'
 													onClick={() => handleDelete(user?._id)}
 													sx={{
 														fontWeight: "bold",

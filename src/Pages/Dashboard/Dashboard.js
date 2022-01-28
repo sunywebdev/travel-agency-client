@@ -40,12 +40,11 @@ function Dashboard(props) {
 						textDecoration: "none",
 						fontWeight: "bold",
 						fontSize: "15px",
-						color: "#02598b",
 					}}
 					to=''>
-					<ListItem button>
-						<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
-							<MenuBookIcon />
+					<ListItem button className='color'>
+						<ListItemIcon sx={{ justifyContent: "center" }}>
+							<MenuBookIcon className='color' />
 						</ListItemIcon>
 						<ListItemText primary={"My Reviews"} />
 					</ListItem>
@@ -56,12 +55,11 @@ function Dashboard(props) {
 						textDecoration: "none",
 						fontWeight: "bold",
 						fontSize: "15px",
-						color: "#02598b",
 					}}
 					to='addblog'>
-					<ListItem button>
-						<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
-							<MenuBookIcon />
+					<ListItem button className='color'>
+						<ListItemIcon sx={{ justifyContent: "center" }}>
+							<MenuBookIcon className='color' />
 						</ListItemIcon>
 						<ListItemText primary={"Add New Blog"} />
 					</ListItem>
@@ -73,13 +71,11 @@ function Dashboard(props) {
 								textDecoration: "none",
 								fontWeight: "bold",
 								fontSize: "15px",
-								color: "#02598b",
 							}}
 							to='allblogs'>
-							<ListItem button>
-								<ListItemIcon
-									sx={{ justifyContent: "center", color: "#02598b" }}>
-									<LocalLibraryIcon />
+							<ListItem button className='color'>
+								<ListItemIcon sx={{ justifyContent: "center" }}>
+									<LocalLibraryIcon className='color' />
 								</ListItemIcon>
 								<ListItemText primary={"All Blogs"} />
 							</ListItem>
@@ -89,13 +85,11 @@ function Dashboard(props) {
 								textDecoration: "none",
 								fontWeight: "bold",
 								fontSize: "15px",
-								color: "#02598b",
 							}}
 							to='allreviews'>
-							<ListItem button>
-								<ListItemIcon
-									sx={{ justifyContent: "center", color: "#02598b" }}>
-									<ReviewsIcon />
+							<ListItem button className='color'>
+								<ListItemIcon sx={{ justifyContent: "center" }}>
+									<ReviewsIcon className='color' />
 								</ListItemIcon>
 								<ListItemText primary={"All Reviews"} />
 							</ListItem>
@@ -106,13 +100,25 @@ function Dashboard(props) {
 								textDecoration: "none",
 								fontWeight: "bold",
 								fontSize: "15px",
-								color: "#02598b",
+							}}
+							to='slider'>
+							<ListItem button className='color'>
+								<ListItemIcon sx={{ justifyContent: "center" }}>
+									<VerifiedUserIcon className='color' />
+								</ListItemIcon>
+								<ListItemText primary={"Slider"} />
+							</ListItem>
+						</Link>
+						<Link
+							style={{
+								textDecoration: "none",
+								fontWeight: "bold",
+								fontSize: "15px",
 							}}
 							to='userRoles'>
-							<ListItem button>
-								<ListItemIcon
-									sx={{ justifyContent: "center", color: "#02598b" }}>
-									<VerifiedUserIcon />
+							<ListItem button className='color'>
+								<ListItemIcon sx={{ justifyContent: "center" }}>
+									<VerifiedUserIcon className='color' />
 								</ListItemIcon>
 								<ListItemText primary={"Page Roles"} />
 							</ListItem>
@@ -122,13 +128,11 @@ function Dashboard(props) {
 								textDecoration: "none",
 								fontWeight: "bold",
 								fontSize: "15px",
-								color: "#02598b",
 							}}
 							to='allusers'>
-							<ListItem button>
-								<ListItemIcon
-									sx={{ justifyContent: "center", color: "#02598b" }}>
-									<GroupIcon />
+							<ListItem button className='color'>
+								<ListItemIcon sx={{ justifyContent: "center" }}>
+									<GroupIcon className='color' />
 								</ListItemIcon>
 								<ListItemText primary={"All Users"} />
 							</ListItem>
@@ -141,19 +145,18 @@ function Dashboard(props) {
 						textDecoration: "none",
 						fontWeight: "bold",
 						fontSize: "15px",
-						color: "#02598b",
 					}}
 					to='/'>
-					<ListItem button>
-						<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
-							<HomeIcon />
+					<ListItem button className='color'>
+						<ListItemIcon sx={{ justifyContent: "center" }}>
+							<HomeIcon className='color' />
 						</ListItemIcon>
 						<ListItemText primary={"Home"} />
 					</ListItem>
 				</Link>
-				<ListItem onClick={logOut} button sx={{ color: "#02598b" }}>
-					<ListItemIcon sx={{ justifyContent: "center", color: "#02598b" }}>
-						<Logout />
+				<ListItem onClick={logOut} button className='color'>
+					<ListItemIcon sx={{ justifyContent: "center" }}>
+						<Logout className='color' />
 					</ListItemIcon>
 					<ListItemText primary={"LogOut"} />
 				</ListItem>
@@ -169,10 +172,10 @@ function Dashboard(props) {
 			<CssBaseline />
 			<AppBar
 				position='fixed'
+				className='button'
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
-					backgroundColor: "#02598b",
 				}}>
 				<Toolbar>
 					<IconButton

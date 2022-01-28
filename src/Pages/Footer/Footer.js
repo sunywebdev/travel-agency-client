@@ -20,7 +20,8 @@ const Footer = () => {
 							variant='h6'
 							gutterBottom
 							component='div'
-							sx={{ fontWeight: "bold", color: "#02598b" }}>
+							className='color'
+							sx={{ fontWeight: "bold" }}>
 							About This Site
 						</Typography>
 						<Typography variant='subtitle' gutterBottom component='div'>
@@ -43,7 +44,8 @@ const Footer = () => {
 							variant='h6'
 							gutterBottom
 							component='div'
-							sx={{ pl: 2, fontWeight: "bold", color: "#02598b" }}>
+							className='color'
+							sx={{ pl: 2, fontWeight: "bold" }}>
 							Develop
 						</Typography>
 						<List>
@@ -63,7 +65,8 @@ const Footer = () => {
 							variant='h6'
 							gutterBottom
 							component='div'
-							sx={{ pl: 2, fontWeight: "bold", color: "#02598b" }}>
+							className='color'
+							sx={{ pl: 2, fontWeight: "bold" }}>
 							Discover
 						</Typography>
 						<List>
@@ -85,7 +88,8 @@ const Footer = () => {
 				variant='subtitle'
 				gutterBottom
 				component='div'
-				sx={{ textAlign: "center", py: 2, color: "#02598b" }}>
+				className='color'
+				sx={{ textAlign: "center", py: 2 }}>
 				&copy; 2022 All Rights Reserved
 			</Typography>
 		</>

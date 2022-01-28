@@ -9,6 +9,7 @@ import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import DateRangeIcon from "@mui/icons-material/DateRange";
 import CreateIcon from "@mui/icons-material/Create";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 export default function Blogs() {
 	const [page, setPage] = useState(0);
@@ -33,85 +34,111 @@ export default function Blogs() {
 			<Typography
 				variant='h3'
 				component='div'
-				sx={{ mb: 2, fontWeight: "bold" }}>
-				FEATURED BLOG POSTS
+				sx={{ mb: 3, fontWeight: "bold" }}>
+				<span className='color'>FEATURED </span> BLOG POSTS
 			</Typography>
-			<Grid container spacing={2} sx={{ mb: 2 }}>
-				{blogs?.map((blog) => (
-					<Grid item md={12} xs={12}>
-						{blog?.confirmation === "Approved" && (
-							<Card sx={{ borderRadius: 2 }}>
-								<CardMedia
-									component='img'
-									height='400'
-									image={blog?.imageLink}
-									alt=''
-								/>
-								<CardContent sx={{ textAlign: "left" }}>
-									<Grid container sx={{ mb: 2 }}>
-										<Grid item xs>
-											<Box sx={{ display: "flex", justifyContent: "center" }}>
-												<DateRangeIcon />
-												<Typography
-													sx={{ ml: 0.5 }}
-													gutterBottom
-													variant='button'
-													component='div'>
-													{blog?.postTime}
-												</Typography>
-											</Box>
+			{blogs?.length ? (
+				<Grid container spacing={2} sx={{ mb: 2 }}>
+					{blogs?.map((blog) => (
+						<Grid item md={12} xs={12}>
+							{blog?.confirmation === "Approved" && (
+								<Card
+									sx={{
+										borderRadius: 2,
+										display: "flex",
+										flexDirection: { md: "row", xs: "column" },
+									}}>
+									<CardMedia
+										component='img'
+										sx={{ width: { md: 300, xs: "100%" } }}
+										image={blog?.imageLink}
+										alt=''
+									/>
+									<CardContent sx={{ textAlign: "left" }}>
+										<Grid
+											container
+											sx={{
+												mb: 2,
+												justifyContent: "space-between",
+												color: "#02020285",
+											}}>
+											<Grid item>
+												<Box sx={{ display: "flex" }}>
+													<DateRangeIcon className='color' />
+													<Typography
+														sx={{ ml: 0.5 }}
+														gutterBottom
+														variant='button'
+														component='div'>
+														{blog?.postTime.split(",")[0]}
+													</Typography>
+												</Box>
+											</Grid>
+											<Grid item>
+												<Box sx={{ display: "flex" }}>
+													<CreateIcon className='color' />
+													<Typography
+														sx={{ ml: 0.5 }}
+														gutterBottom
+														variant='button'
+														component='div'>
+														{blog?.publishedBy}
+													</Typography>
+												</Box>
+											</Grid>
+											<Grid item>
+												<Box
+													sx={{
+														display: "flex",
+													}}>
+													<Rating
+														className='color'
+														sx={{ color: "#02020285" }}
+														precision={0.1}
+														name='disabled'
+														value={blog?.rating || 0}
+														readOnly
+													/>
+													<Typography variant='subtitle1' sx={{ ml: 0.5 }}>
+														{blog?.rating || 0}({blog?.totalRating || 0})
+													</Typography>
+												</Box>
+											</Grid>
 										</Grid>
-										<Grid item xs>
-											<Box sx={{ display: "flex", justifyContent: "center" }}>
-												<CreateIcon />
-												<Typography
-													sx={{ ml: 0.5 }}
-													gutterBottom
-													variant='button'
-													component='div'>
-													{blog?.publishedBy}
-												</Typography>
-											</Box>
-										</Grid>
-										<Grid item xs>
-											<Box
-												sx={{
-													display: "flex",
-													alignItems: "center",
-												}}>
-												<Rating
-													name='disabled'
-													value={blog?.rating || 0}
-													readOnly
-												/>
-												<Typography
-													variant='subtitle1'
-													sx={{ ml: 0.5 }}
-													color='text.secondary'>
-													{blog?.rating || 0}({blog?.totalRating || 0})
-												</Typography>
-											</Box>
-										</Grid>
-									</Grid>
 
-									<Typography gutterBottom variant='h4'>
-										{blog?.blogTitle}
-									</Typography>
-									<Typography variant='button' color='text.secondary'>
-										{blog?.details?.slice(0, 400)}......
-									</Typography>
-									<br />
-									<Link
-										to={`/blog/${blog?._id}`}
-										style={{ textDecoration: "none" }}>
-										<Button endIcon={<ReadMoreIcon />}>Read More</Button>
-									</Link>
-								</CardContent>
-							</Card>
-						)}
-					</Grid>
-				))}
-			</Grid>
+										<Typography
+											className='color'
+											gutterBottom
+											variant='h5'
+											sx={{ fontWeight: "bold" }}>
+											{blog?.blogTitle}
+										</Typography>
+										<Typography variant='button' color='text.secondary'>
+											{blog?.details?.slice(0, 400)}......
+										</Typography>
+										<br />
+										<Link
+											to={`/blog/${blog?._id}`}
+											style={{ textDecoration: "none" }}>
+											<Button
+												className='button'
+												sx={{ mt: 1 }}
+												variant='contained'
+												endIcon={<ReadMoreIcon />}>
+												Read More
+											</Button>
+										</Link>
+									</CardContent>
+								</Card>
+							)}
+						</Grid>
+					))}
+				</Grid>
+			) : (
+				<div className='loader'>
+					<PropagateLoader size={10} />
+				</div>
+			)}
 			<div className='pagination'>
 				{[...Array(pageCount).keys()].map((number) => (
 					<button

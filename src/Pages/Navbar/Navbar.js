@@ -20,11 +20,14 @@ const Navbar = () => {
 	const { user, logOut } = useAuth();
 	return (
 		<Box sx={{ flexGrow: 1 }}>
-			<AppBar position='static'>
-				<Toolbar
-					sx={{
-						backgroundColor: "#02598B",
-					}}>
+			<AppBar
+				style={{
+					position: "absolute",
+					zIndex: 999,
+					background: "rgb(0 0 0 / 40%)",
+					boxShadow: "none",
+				}}>
+				<Toolbar>
 					<Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
 						Travel Blogs
 					</Typography>
@@ -58,16 +61,21 @@ const Navbar = () => {
 							},
 						}}>
 						<MenuItem onClick={handleClose}>
-							<Link to='/' style={{ textDecoration: "none" }}>
+							<Link to='/' style={{ textDecoration: "none" }} className='color'>
 								Home
 							</Link>
 						</MenuItem>
 						<MenuItem onClick={handleClose}>
-							<Link to='/dashboard' style={{ textDecoration: "none" }}>
+							<Link
+								to='/dashboard'
+								style={{ textDecoration: "none" }}
+								className='color'>
 								Dashboard
 							</Link>
 						</MenuItem>
-						<MenuItem onClick={logOut}>LogOut</MenuItem>
+						<MenuItem onClick={logOut} className='color'>
+							LogOut
+						</MenuItem>
 					</Menu>
 				</Toolbar>
 			</AppBar>

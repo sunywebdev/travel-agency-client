@@ -3,7 +3,7 @@
 }
 
 .pagination {
-	margin: 30px;
+	margin: 60px 30px;
 }
 .pagination button {
 	padding: 5px 10px;
@@ -11,6 +11,16 @@
 	border-radius: 50%;
 }
 .pagination .selected {
-	background-color: rgb(43, 43, 224);
+	background-color: #59815b;
 	color: white;
+}
+.button {
+	background-color: #59815b !important;
+}
+
+.color {
+	color: #59815b !important;
+}
+.loader span {
+	background: #59815b !important;
 }

@@ -57,7 +57,7 @@ const MyReviews = () => {
 		<Container sx={{ mt: { xs: 9, md: 2 }, minHeight: "100vh" }}>
 			<Grid>
 				<Typography
-					className='color-theme'
+					className='color'
 					sx={{ mb: 3, fw: "bold", color: "#02598b" }}
 					variant='h4'
 					component='div'
@@ -71,25 +71,25 @@ const MyReviews = () => {
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										No
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Photo
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Name
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Email
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Star
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Reviews
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Action
 									</TableCell>
 								</TableRow>
@@ -126,7 +126,7 @@ const MyReviews = () => {
 											</TableCell>
 											<TableCell align='left'>
 												<Button
-													className='button border'
+													className='button'
 													onClick={() => handleDelete(review?._id)}
 													sx={{
 														fontWeight: "bold",

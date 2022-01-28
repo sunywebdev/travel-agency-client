@@ -54,7 +54,8 @@ const PageRols = () => {
 				variant='h4'
 				gutterBottom
 				component='div'
-				sx={{ fontWeight: "bold", color: "#02598b" }}>
+				className='color'
+				sx={{ fontWeight: "bold" }}>
 				Change or Add Page Role
 			</Typography>
 			<form onSubmit={handleSubmit(onSubmit)}>
@@ -100,15 +101,7 @@ const PageRols = () => {
 								<MenuItem value='User'>User</MenuItem>
 							</Select>
 						</FormControl>
-						<Button
-							type='submit'
-							variant='contained'
-							sx={{
-								backgroundColor: "#02598b",
-								"&.MuiButtonBase-root:hover": {
-									bgcolor: "#02598b",
-								},
-							}}>
+						<Button type='submit' variant='contained' className='button'>
 							Change Role
 						</Button>
 					</Box>

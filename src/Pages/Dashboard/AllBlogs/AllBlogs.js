@@ -121,8 +121,8 @@ const AllBlogs = () => {
 			}}>
 			<Grid>
 				<Typography
-					className='color-theme'
-					sx={{ mb: 3, fw: "bold", color: "#02598b" }}
+					className='color'
+					sx={{ mb: 3, fw: "bold" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -135,22 +135,22 @@ const AllBlogs = () => {
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										No
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Title
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Publish Date
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Author
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Status
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									<TableCell className='color' align='left'>
 										Action
 									</TableCell>
 								</TableRow>
@@ -182,7 +182,7 @@ const AllBlogs = () => {
 													<> </>
 												) : (
 													<Button
-														className='button border'
+														className='button'
 														onClick={() => handleConfirm(blog?.blogID)}
 														sx={{
 															fontWeight: "bold",
@@ -197,7 +197,7 @@ const AllBlogs = () => {
 													<> </>
 												) : (
 													<Button
-														className='button border'
+														className='button'
 														onClick={() => handleCancel(blog?.blogID)}
 														sx={{
 															fontWeight: "bold",
@@ -209,7 +209,7 @@ const AllBlogs = () => {
 													</Button>
 												)}
 												<Button
-													className='button border'
+													className='button'
 													onClick={() => handleDelete(blog?._id)}
 													sx={{
 														fontWeight: "bold",
