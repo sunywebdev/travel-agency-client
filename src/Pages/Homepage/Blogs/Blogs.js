@@ -43,10 +43,12 @@ export default function Blogs() {
 						<Grid item md={12} xs={12}>
 							{blog?.confirmation === "Approved" && (
 								<Card
+									elevation={3}
 									sx={{
 										borderRadius: 2,
 										display: "flex",
 										flexDirection: { md: "row", xs: "column" },
+										backgroundColor: "transparent",
 									}}>
 									<CardMedia
 										component='img'

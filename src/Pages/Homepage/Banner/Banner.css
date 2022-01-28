@@ -21,10 +21,3 @@
 .swiper-pagination-fraction {
 	bottom: 50px !important;
 }
-.swiper-slide {
-	filter: blur(4px);
-}
-
-.swiper-slide-active {
-	filter: blur(0);
-}

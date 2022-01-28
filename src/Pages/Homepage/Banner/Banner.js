@@ -30,14 +30,13 @@ const Banner = () => {
 							<Card
 								sx={{
 									width: "100%",
-									height: { md: "90vh", sm: "70vh", xs: "60vh" },
+									height: { md: "100vh", sm: "80vh", xs: "60vh" },
 									backgroundImage: `url(${slider?.imageLink2})`,
 									backgroundSize: "cover",
 									color: "white",
 								}}>
 								<CardContent
 									sx={{
-										backdropFilter: " blur(1px)",
 										width: "100%",
 										height: "100%",
 										display: "flex",

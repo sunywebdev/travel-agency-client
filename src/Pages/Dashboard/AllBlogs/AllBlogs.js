@@ -188,6 +188,7 @@ const AllBlogs = () => {
 															fontWeight: "bold",
 															border: "2px solid",
 															borderRadius: "25px",
+															m: 0.5,
 														}}
 														variant='contained'>
 														<DoneOutlineIcon />
@@ -203,6 +204,7 @@ const AllBlogs = () => {
 															fontWeight: "bold",
 															border: "2px solid",
 															borderRadius: "25px",
+															m: 0.5,
 														}}
 														variant='contained'>
 														<CloseIcon />
@@ -215,6 +217,7 @@ const AllBlogs = () => {
 														fontWeight: "bold",
 														border: "2px solid",
 														borderRadius: "25px",
+														m: 0.5,
 													}}
 													variant='contained'>
 													<DeleteIcon />

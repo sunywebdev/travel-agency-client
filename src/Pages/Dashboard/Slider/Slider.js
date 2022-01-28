@@ -201,7 +201,7 @@ const Slider = () => {
 								</Grid>
 								<Grid item md={12} xs={12}>
 									<Button
-										className='sendButton'
+										className='button'
 										type='submit'
 										sx={{
 											width: "100%",

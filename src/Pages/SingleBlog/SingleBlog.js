@@ -137,7 +137,9 @@ const SingleBlog = () => {
 				<Container sx={{ mb: 2, mt: 9 }} maxWidth={false}>
 					<Grid container spacing={2} sx={{ mb: 2 }}>
 						<Grid item md={9} xs={12}>
-							<Card sx={{ borderRadius: 2 }}>
+							<Card
+								sx={{ borderRadius: 2, backgroundColor: "transparent" }}
+								elevation={3}>
 								<CardMedia
 									component='img'
 									height='100%'
@@ -327,7 +329,9 @@ const SingleBlog = () => {
 									</Box>
 								</CardContent>
 							</Card>
-							<Accordion sx={{ my: 2 }}>
+							<Accordion
+								sx={{ my: 2, backgroundColor: "transparent", borderRadius: 2 }}
+								elevation={3}>
 								<AccordionSummary
 									aria-controls='panel1a-content'
 									id='panel1a-header'>
@@ -390,7 +394,9 @@ const SingleBlog = () => {
 									</form>
 								</AccordionDetails>
 							</Accordion>
-							<Paper elevation={3}>
+							<Paper
+								sx={{ backgroundColor: "transparent", borderRadius: 2 }}
+								elevation={3}>
 								<Typography
 									variant='h4'
 									sx={{ fontWeight: "bold", pt: 1 }}
