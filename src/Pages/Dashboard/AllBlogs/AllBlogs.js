@@ -16,6 +16,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
+import { Link } from "react-router-dom";
 
 const AllBlogs = () => {
 	const [deleted, setDeleted] = useState(false);
@@ -222,6 +224,21 @@ const AllBlogs = () => {
 													variant='contained'>
 													<DeleteIcon />
 												</Button>
+												<Link
+													to={`/dashboard/editblog/${blog?._id}`}
+													style={{ textDecoration: "none" }}>
+													<Button
+														className='button'
+														sx={{
+															fontWeight: "bold",
+															border: "2px solid",
+															borderRadius: "25px",
+															m: 0.5,
+														}}
+														variant='contained'>
+														<EditIcon />
+													</Button>
+												</Link>
 											</TableCell>
 										</TableRow>
 									))}

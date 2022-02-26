@@ -7,6 +7,7 @@ import AllBlogs from "./Pages/Dashboard/AllBlogs/AllBlogs";
 import AllReviews from "./Pages/Dashboard/AllReviews/AllReviews";
 import AllUsers from "./Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import EditBlog from "./Pages/Dashboard/EditBlog/EditBlog";
 import MyBlogs from "./Pages/Dashboard/MyBlogs/MyBlogs";
 import MyReviews from "./Pages/Dashboard/MyReviews/MyReviews";
 import PageRols from "./Pages/Dashboard/PageRols/PageRols";
@@ -58,6 +59,14 @@ function App() {
 								element={
 									<AdminRoute>
 										<AllBlogs />
+									</AdminRoute>
+								}
+							/>
+							<Route
+								path='/dashboard/editblog/:id'
+								element={
+									<AdminRoute>
+										<EditBlog />
 									</AdminRoute>
 								}
 							/>
